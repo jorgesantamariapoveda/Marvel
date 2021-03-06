@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64769625F3903100252736 /* CharactersTableViewController.swift */; };
 		CF6476C825F39B2300252736 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476C725F39B2300252736 /* DetailTableViewController.swift */; };
+		CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476CD25F3A37700252736 /* MarvelModel.swift */; };
+		CF6476D925F3BB8F00252736 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476D825F3BB8F00252736 /* MarvelResponse.swift */; };
 		CFE1BC0225EE32F1006F003E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE1BC0125EE32F1006F003E /* AppDelegate.swift */; };
 		CFE1BC0425EE32F1006F003E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE1BC0325EE32F1006F003E /* SceneDelegate.swift */; };
 		CFE1BC0925EE32F1006F003E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE1BC0725EE32F1006F003E /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		CF64769625F3903100252736 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
 		CF6476C725F39B2300252736 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		CF6476CD25F3A37700252736 /* MarvelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelModel.swift; sourceTree = "<group>"; };
+		CF6476D825F3BB8F00252736 /* MarvelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
 		CFE1BBFE25EE32F1006F003E /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE1BC0125EE32F1006F003E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFE1BC0325EE32F1006F003E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,9 +76,19 @@
 		CF6476A125F390A600252736 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				CF6476D125F3A37E00252736 /* Model */,
 				CF64769525F3903100252736 /* Controller */,
 			);
 			path = Characters;
+			sourceTree = "<group>";
+		};
+		CF6476D125F3A37E00252736 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF6476D825F3BB8F00252736 /* MarvelResponse.swift */,
+				CF6476CD25F3A37700252736 /* MarvelModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CFE1BBF525EE32F1006F003E = {
@@ -219,8 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF6476C825F39B2300252736 /* DetailTableViewController.swift in Sources */,
+				CF6476D925F3BB8F00252736 /* MarvelResponse.swift in Sources */,
 				CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */,
 				CFE1BC0225EE32F1006F003E /* AppDelegate.swift in Sources */,
+				CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */,
 				CFE1BC0425EE32F1006F003E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

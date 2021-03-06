@@ -9,6 +9,8 @@ import UIKit
 
 final class CharactersTableViewController: UITableViewController {
 
+    var model = MarvelModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,14 +20,14 @@ final class CharactersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        model.numCharacters()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellCharacters", for: indexPath)
 
-        cell.textLabel?.text = "title"
-        cell.detailTextLabel?.text = "detalle"
+        cell.textLabel?.text = model.nameCharacterByIndex(indexPath.row)
+        cell.detailTextLabel?.text = model.descriptionCharacter(index: indexPath.row)
         cell.imageView?.image = UIImage(systemName: "person.fill")
 
         return cell
@@ -37,7 +39,8 @@ final class CharactersTableViewController: UITableViewController {
         if segue.identifier == "detail" {
             if let detailVC = segue.destination as? DetailTableViewController,
                let indexPath = tableView.indexPathForSelectedRow {
-                detailVC.title = "Celda \(indexPath.row + 1)"
+                detailVC.model = model
+                detailVC.idCharacterModel = model.idCharacter(index: indexPath.row)
             }
         }
     }

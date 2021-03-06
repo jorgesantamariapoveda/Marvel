@@ -9,8 +9,12 @@ import UIKit
 
 final class DetailTableViewController: UITableViewController {
 
+    var model: MarvelModel?
+    var idCharacterModel: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
 
 }
