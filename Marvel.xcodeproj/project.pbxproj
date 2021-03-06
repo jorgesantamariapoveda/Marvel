@@ -11,6 +11,7 @@
 		CF6476C825F39B2300252736 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476C725F39B2300252736 /* DetailTableViewController.swift */; };
 		CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476CD25F3A37700252736 /* MarvelModel.swift */; };
 		CF6476D925F3BB8F00252736 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476D825F3BB8F00252736 /* MarvelResponse.swift */; };
+		CF6476DF25F3D60200252736 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476DE25F3D60200252736 /* Constants.swift */; };
 		CFE1BC0225EE32F1006F003E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE1BC0125EE32F1006F003E /* AppDelegate.swift */; };
 		CFE1BC0425EE32F1006F003E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE1BC0325EE32F1006F003E /* SceneDelegate.swift */; };
 		CFE1BC0925EE32F1006F003E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFE1BC0725EE32F1006F003E /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		CF6476C725F39B2300252736 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		CF6476CD25F3A37700252736 /* MarvelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelModel.swift; sourceTree = "<group>"; };
 		CF6476D825F3BB8F00252736 /* MarvelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
+		CF6476DE25F3D60200252736 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CFE1BBFE25EE32F1006F003E /* Marvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFE1BC0125EE32F1006F003E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFE1BC0325EE32F1006F003E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CF6476E225F3D60900252736 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CF6476DE25F3D60200252736 /* Constants.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		CFE1BBF525EE32F1006F003E = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 				CFE1BC0125EE32F1006F003E /* AppDelegate.swift */,
 				CFE1BC0325EE32F1006F003E /* SceneDelegate.swift */,
 				CF6476A125F390A600252736 /* Characters */,
+				CF6476E225F3D60900252736 /* Util */,
 				CFE1BC0725EE32F1006F003E /* Main.storyboard */,
 				CFE1BC0A25EE32F2006F003E /* Assets.xcassets */,
 				CFE1BC0C25EE32F2006F003E /* LaunchScreen.storyboard */,
@@ -236,6 +247,7 @@
 				CF6476D925F3BB8F00252736 /* MarvelResponse.swift in Sources */,
 				CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */,
 				CFE1BC0225EE32F1006F003E /* AppDelegate.swift in Sources */,
+				CF6476DF25F3D60200252736 /* Constants.swift in Sources */,
 				CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */,
 				CFE1BC0425EE32F1006F003E /* SceneDelegate.swift in Sources */,
 			);

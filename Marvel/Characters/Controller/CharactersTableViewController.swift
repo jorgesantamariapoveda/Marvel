@@ -15,6 +15,31 @@ final class CharactersTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.clearsSelectionOnViewWillAppear = false
+
+        setupData()
+    }
+
+    private func setupData() {
+        model.getCharactersNetwork { [weak self] result in
+            switch result {
+            case .success(let charactersModel):
+                self?.model.setCharactersModel(charactersModel)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error as MarvelError):
+                switch error {
+                case .statusCode(let statusCode):
+                    print("Error Code: \(statusCode)")
+                case.decoding:
+                    print("Error in decoding")
+                case .serverDown(let error):
+                    print("Server down: \(error.localizedDescription)")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 
     // MARK: - Table view data source
