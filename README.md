@@ -1,7 +1,7 @@
 # Marvel
 Listado de los personajes Marvel y permitir ver el detalle de cada uno de ellos de manera individual.
 
-API de Marvel: [https://developer.marvel.com/docs](https://developer.marvel.com/docs)
+API de Marvel: [https://developer.marvel.com/docs](https://developer.marvel.com/docs). Es necesario registrarse (gratuito).
 
 ## Funcionalidad
 - Listado de los personajes (/v1/public/characters)
