@@ -33,8 +33,8 @@ final class CharactersTableViewController: UITableViewController {
                     print("Error Code: \(statusCode)")
                 case.decoding:
                     print("Error in decoding")
-                case .serverDown(let error):
-                    print("Server down: \(error.localizedDescription)")
+                case .connectionError(let error):
+                    print("Connection error: \(error.localizedDescription)")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -53,7 +53,13 @@ final class CharactersTableViewController: UITableViewController {
 
         cell.textLabel?.text = model.nameCharacterByIndex(indexPath.row)
         cell.detailTextLabel?.text = model.descriptionCharacter(index: indexPath.row)
-        cell.imageView?.image = UIImage(systemName: "person.fill")
+
+        if let id = model.idCharacter(index: indexPath.row) {
+            model.getImageNetwork(id: id, size: .small) {
+                cell.imageView?.image = $0
+                cell.setNeedsUpdateConfiguration()
+            }
+        }
 
         return cell
     }
