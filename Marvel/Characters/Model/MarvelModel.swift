@@ -16,7 +16,7 @@ enum MarvelError: Error {
 }
 
 enum ImageVariants: String {
-    case small = "/standard_small"
+    case small = "/portrait_small"
     case big = "/landscape_incredible"
 }
 

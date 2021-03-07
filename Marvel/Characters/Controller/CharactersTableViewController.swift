@@ -51,19 +51,23 @@ final class CharactersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellCharacters", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellCharacters", for: indexPath) as? CharactersTableViewCell else {
+            return UITableViewCell()
+        }
 
-        cell.textLabel?.text = model.nameCharacterByIndex(indexPath.row)
-        cell.detailTextLabel?.text = model.descriptionCharacter(index: indexPath.row)
-
+        cell.nameLabel.text = model.nameCharacterByIndex(indexPath.row)
         if let id = model.idCharacter(index: indexPath.row) {
             model.imageNetwork(id: id, size: .small) {
-                cell.imageView?.image = $0
+                cell.avatar.image = $0
                 cell.setNeedsUpdateConfiguration()
             }
         }
 
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        97
     }
 
     // MARK: - Navigation

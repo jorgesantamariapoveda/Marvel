@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF4723D125F4EA0A00CC7BA1 /* CharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */; };
 		CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64769625F3903100252736 /* CharactersTableViewController.swift */; };
 		CF6476C825F39B2300252736 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476C725F39B2300252736 /* DetailTableViewController.swift */; };
 		CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476CD25F3A37700252736 /* MarvelModel.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewCell.swift; sourceTree = "<group>"; };
 		CF64769625F3903100252736 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
 		CF6476C725F39B2300252736 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		CF6476CD25F3A37700252736 /* MarvelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelModel.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				CF64769625F3903100252736 /* CharactersTableViewController.swift */,
+				CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */,
 				CF6476C725F39B2300252736 /* DetailTableViewController.swift */,
 			);
 			path = Controller;
@@ -246,6 +249,7 @@
 				CF6476C825F39B2300252736 /* DetailTableViewController.swift in Sources */,
 				CF6476D925F3BB8F00252736 /* MarvelResponse.swift in Sources */,
 				CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */,
+				CF4723D125F4EA0A00CC7BA1 /* CharactersTableViewCell.swift in Sources */,
 				CFE1BC0225EE32F1006F003E /* AppDelegate.swift in Sources */,
 				CF6476DF25F3D60200252736 /* Constants.swift in Sources */,
 				CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */,
