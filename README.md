@@ -21,3 +21,5 @@ API de Marvel: [https://developer.marvel.com/docs](https://developer.marvel.com/
 - Las peticiones a red tienen que ser por https, por lo que para la obtención de las imágenes he tenido que modificar el path que devuelve el API de Marvel en el momento de realizar las peticiones.
 
 - Para las imágenes hay diferentes tamaños como se indica en [developer.marvel.com/documentation/images](https://developer.marvel.com/documentation/images). He empleado dicha característica para mostrar en un tamaño pequeño las imágenes de los personajes en la vista principal y otro más grande para la vista detalle.
+
+- Precisamente uno de los atributos necesarios para obtener la url de las imágenes tiene como nombre *extension*. Al ser una palabra reservada del lenguaje Swift he empleado CodingKeys para solucionarlo.
