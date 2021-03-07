@@ -43,6 +43,7 @@
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="jMb-Mn-syx" secondAttribute="trailing" constant="16" id="P5z-dt-Meb"/>
                                         <constraint firstItem="jMb-Mn-syx" firstAttribute="centerY" secondItem="vKd-ea-4tX" secondAttribute="centerY" id="YhL-00-9m7"/>
                                         <constraint firstItem="vKd-ea-4tX" firstAttribute="leading" secondItem="uv4-lb-f4Z" secondAttribute="leading" constant="20" symbolic="YES" id="eTL-CU-mx3"/>
+                                        <constraint firstItem="vKd-ea-4tX" firstAttribute="bottom" secondItem="uv4-lb-f4Z" secondAttribute="bottomMargin" id="qti-n3-XhF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
