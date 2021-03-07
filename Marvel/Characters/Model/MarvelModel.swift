@@ -12,6 +12,7 @@ enum MarvelError: Error {
     case connectionError(Error)
     case statusCode(Int)
     case decoding
+    case emptyData
 }
 
 enum ImageVariants: String {
@@ -44,7 +45,7 @@ struct MarvelModel {
     }
 
     func nameCharacterById(_ id: Int) -> String? {
-        if let character = getCharacterById(id) {
+        if let character = characterById(id) {
             return character.name
         }
         return nil
@@ -57,13 +58,13 @@ struct MarvelModel {
         return nil
     }
 
-    mutating func setCharactersModel(_ charactersModel: [CharacterResponse]) {
+    mutating func updateCharactersModel(_ charactersModel: [CharacterResponse]) {
         characters = charactersModel
     }
 
-    mutating func getCharactersNetwork(completion: @escaping (Result<[CharacterResponse], Error>) -> Void) {
+    mutating func charactersNetwork(completion: @escaping (Result<[CharacterResponse], Error>) -> Void) {
         guard var urlComponents = URLComponents(string: kUrlBaseCharacters) else { return }
-        urlComponents.queryItems = getQueryItems()
+        urlComponents.queryItems = queryItemsMarvel()
 
         guard let url = urlComponents.url else { return }
 
@@ -87,10 +88,10 @@ struct MarvelModel {
                     if let charactersResponse = marvelResponse.data?.results {
                         completion(.success(charactersResponse))
                     } else {
-                        completion(.failure(MarvelError.decoding))
+                        completion(.failure(MarvelError.emptyData))
                     }
                 } catch {
-                    completion(.failure(error))
+                    completion(.failure(MarvelError.decoding))
                 }
             } else {
                 completion(.failure(MarvelError.statusCode(response.statusCode)))
@@ -98,9 +99,9 @@ struct MarvelModel {
         }.resume()
     }
 
-    func getCharacterNetwork(id: Int, completion: @escaping (Result<CharacterResponse, Error>) -> Void) {
+    func characterNetwork(id: Int, completion: @escaping (Result<CharacterResponse, Error>) -> Void) {
         guard var urlComponents = URLComponents(string: "\(kUrlBaseCharacters)/\(id)") else { return }
-        urlComponents.queryItems = getQueryItems()
+        urlComponents.queryItems = queryItemsMarvel()
 
         guard let url = urlComponents.url else { return }
 
@@ -124,10 +125,10 @@ struct MarvelModel {
                     if let characterResponse = marvelResponse.data?.results?.first {
                         completion(.success(characterResponse))
                     } else {
-                        completion(.failure(MarvelError.decoding))
+                        completion(.failure(MarvelError.emptyData))
                     }
                 } catch {
-                    completion(.failure(error))
+                    completion(.failure(MarvelError.decoding))
                 }
             } else {
                 completion(.failure(MarvelError.statusCode(response.statusCode)))
@@ -135,8 +136,8 @@ struct MarvelModel {
         }.resume()
     }
 
-    func getImageNetwork(id: Int, size: ImageVariants, callback: @escaping (UIImage) -> Void) {
-        if let character = getCharacterById(id) {
+    func imageNetwork(id: Int, size: ImageVariants, callback: @escaping (UIImage) -> Void) {
+        if let character = characterById(id) {
             if let thumbnail = character.thumbnail,
                let path = thumbnail.path,
                let thumbnailExtension = thumbnail.thumbnailExtension {
@@ -167,14 +168,14 @@ struct MarvelModel {
 
     // MARK: - private functions
 
-    private func getCharacterById(_ id: Int) -> CharacterResponse? {
+    private func characterById(_ id: Int) -> CharacterResponse? {
         if let character = characters.first(where: { $0.id == id }) {
             return character
         }
         return nil
     }
 
-    private func getQueryItems() -> [URLQueryItem] {
+    private func queryItemsMarvel() -> [URLQueryItem] {
         return [
             URLQueryItem(name: "ts", value: kTs),
             URLQueryItem(name: "apikey", value: kApikey),

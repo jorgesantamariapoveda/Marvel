@@ -20,10 +20,10 @@ final class CharactersTableViewController: UITableViewController {
     }
 
     private func setupData() {
-        model.getCharactersNetwork { [weak self] result in
+        model.charactersNetwork { [weak self] result in
             switch result {
             case .success(let charactersModel):
-                self?.model.setCharactersModel(charactersModel)
+                self?.model.updateCharactersModel(charactersModel)
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -35,6 +35,8 @@ final class CharactersTableViewController: UITableViewController {
                     print("Error in decoding")
                 case .connectionError(let error):
                     print("Connection error: \(error.localizedDescription)")
+                case .emptyData:
+                    print("Empty data")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -55,7 +57,7 @@ final class CharactersTableViewController: UITableViewController {
         cell.detailTextLabel?.text = model.descriptionCharacter(index: indexPath.row)
 
         if let id = model.idCharacter(index: indexPath.row) {
-            model.getImageNetwork(id: id, size: .small) {
+            model.imageNetwork(id: id, size: .small) {
                 cell.imageView?.image = $0
                 cell.setNeedsUpdateConfiguration()
             }
