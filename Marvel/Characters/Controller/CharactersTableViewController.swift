@@ -70,7 +70,7 @@ final class CharactersTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detail" {
-            if let detailVC = segue.destination as? DetailTableViewController,
+            if let detailVC = segue.destination as? DetailCharacterTableViewController,
                let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.model = model
                 detailVC.idCharacterModel = model.idCharacter(index: indexPath.row)

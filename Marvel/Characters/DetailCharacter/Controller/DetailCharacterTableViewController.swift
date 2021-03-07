@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DetailTableViewController: UITableViewController {
+final class DetailCharacterTableViewController: UITableViewController {
 
     var model: MarvelModel?
     var idCharacterModel: Int?
