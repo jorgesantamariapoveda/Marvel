@@ -68,12 +68,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF4723D625F50A5800CC7BA1 /* DetailCharacter */ = {
+			isa = PBXGroup;
+			children = (
+				CF4723D725F50AC700CC7BA1 /* Controller */,
+			);
+			path = DetailCharacter;
+			sourceTree = "<group>";
+		};
+		CF4723D725F50AC700CC7BA1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CF6476C725F39B2300252736 /* DetailTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CF64769525F3903100252736 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CF64769625F3903100252736 /* CharactersTableViewController.swift */,
 				CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */,
-				CF6476C725F39B2300252736 /* DetailTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -83,6 +98,7 @@
 			children = (
 				CF6476D125F3A37E00252736 /* Model */,
 				CF64769525F3903100252736 /* Controller */,
+				CF4723D625F50A5800CC7BA1 /* DetailCharacter */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
