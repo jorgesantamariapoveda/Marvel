@@ -19,13 +19,15 @@ final class CharactersTableViewController: UITableViewController {
         setupData()
     }
 
+    // MARK: - Private functions
+
     private func setupData() {
         model.charactersNetwork { [weak self] result in
             switch result {
             case .success(let charactersModel):
-                self?.model.updateCharactersModel(charactersModel)
+                self?.model.setCharactersModel(charactersModel)
                 DispatchQueue.main.async {
-                    self?.tableView.reloadData()
+                    self?.setupUI()
                 }
             case .failure(let error as MarvelError):
                 switch error {
@@ -44,6 +46,10 @@ final class CharactersTableViewController: UITableViewController {
         }
     }
 
+    private func setupUI() {
+        tableView.reloadData()
+    }
+
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +65,7 @@ final class CharactersTableViewController: UITableViewController {
         if let id = model.idCharacter(index: indexPath.row) {
             model.imageNetwork(id: id, size: .small) {
                 cell.avatar.image = $0
+                cell.avatar.layer.cornerRadius = 8
                 cell.setNeedsUpdateConfiguration()
             }
         }
@@ -70,7 +77,7 @@ final class CharactersTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detail" {
-            if let detailVC = segue.destination as? DetailCharacterTableViewController,
+            if let detailVC = segue.destination as? DetailCharacterViewController,
                let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.model = model
                 detailVC.idCharacterModel = model.idCharacter(index: indexPath.row)

@@ -5,7 +5,6 @@
 //  Created by Jorge on 06/03/2021.
 //
 
-import Foundation
 import UIKit
 
 enum MarvelError: Error {
@@ -17,12 +16,57 @@ enum MarvelError: Error {
 
 enum ImageVariants: String {
     case small = "/portrait_small"
-    case big = "/landscape_incredible"
+    case big = "/landscape_amazing"
 }
 
 struct MarvelModel {
 
     private var characters = [CharacterResponse]()
+    private var selectedCharacter: CharacterResponse?
+
+    private func queryItemsMarvel() -> [URLQueryItem] {
+        return [
+            URLQueryItem(name: "ts", value: kTs),
+            URLQueryItem(name: "apikey", value: kApikey),
+            URLQueryItem(name: "hash", value: kHash)
+        ]
+    }
+
+    func imageNetwork(id: Int, size: ImageVariants, completion: @escaping (UIImage) -> Void) {
+        if let character = characterById(id) {
+            if let thumbnail = character.thumbnail,
+               let path = thumbnail.path,
+               let thumbnailExtension = thumbnail.thumbnailExtension {
+
+                let newPath = path.replacingOccurrences(of: "http", with: "https")
+                guard let url = URL(string: "\(newPath)\(size.rawValue).\(thumbnailExtension)") else {
+                    return
+                }
+
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    guard let data = data,
+                          let response = response as? HTTPURLResponse,
+                          error == nil else {
+                        return
+                    }
+
+                    if response.statusCode == 200 {
+                        if let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                completion(image)
+                            }
+                        }
+                    }
+                }.resume()
+            }
+        }
+    }
+
+}
+
+// MARK: - Characters
+
+extension MarvelModel {
 
     // MARK: - Public functions
 
@@ -37,28 +81,21 @@ struct MarvelModel {
         return nil
     }
 
-    func nameCharacterByIndex(_ index: Int) -> String? {
+    func nameCharacterByIndex(_ index: Int) -> String {
         if index < characters.count {
-            return characters[index].name
+            return characters[index].name ?? ""
+        }
+        return ""
+    }
+
+    private func characterById(_ id: Int) -> CharacterResponse? {
+        if let character = characters.first(where: { $0.id == id }) {
+            return character
         }
         return nil
     }
 
-    func nameCharacterById(_ id: Int) -> String? {
-        if let character = characterById(id) {
-            return character.name
-        }
-        return nil
-    }
-
-    func descriptionCharacter(index: Int) -> String? {
-        if index < characters.count {
-            return characters[index].description
-        }
-        return nil
-    }
-
-    mutating func updateCharactersModel(_ charactersModel: [CharacterResponse]) {
+    mutating func setCharactersModel(_ charactersModel: [CharacterResponse]) {
         characters = charactersModel
     }
 
@@ -99,6 +136,42 @@ struct MarvelModel {
         }.resume()
     }
 
+
+}
+
+// MARK: - Selected Character
+
+extension MarvelModel {
+
+    // MARK: - Queries
+
+    mutating func setSelectedCharacter(_ characterModel: CharacterResponse) {
+        selectedCharacter = characterModel
+    }
+
+    func getNumComics() -> String {
+        if let available = selectedCharacter?.comics?.available {
+            return "\(available)"
+        }
+        return ""
+    }
+
+    func getNumSeries() -> String {
+        if let available = selectedCharacter?.series?.available {
+            return "\(available)"
+        }
+        return ""
+    }
+
+    func getNumStories() -> String {
+        if let available = selectedCharacter?.stories?.available {
+            return "\(available)"
+        }
+        return ""
+    }
+
+    // MARK: - Network
+
     func characterNetwork(id: Int, completion: @escaping (Result<CharacterResponse, Error>) -> Void) {
         guard var urlComponents = URLComponents(string: "\(kUrlBaseCharacters)/\(id)") else { return }
         urlComponents.queryItems = queryItemsMarvel()
@@ -136,51 +209,8 @@ struct MarvelModel {
         }.resume()
     }
 
-    func imageNetwork(id: Int, size: ImageVariants, completion: @escaping (UIImage) -> Void) {
-        if let character = characterById(id) {
-            if let thumbnail = character.thumbnail,
-               let path = thumbnail.path,
-               let thumbnailExtension = thumbnail.thumbnailExtension {
-
-                let newPath = path.replacingOccurrences(of: "http", with: "https")
-                guard let url = URL(string: "\(newPath)\(size.rawValue).\(thumbnailExtension)") else {
-                    return
-                }
-
-                URLSession.shared.dataTask(with: url) { data, response, error in
-                    guard let data = data,
-                          let response = response as? HTTPURLResponse,
-                          error == nil else {
-                        return
-                    }
-
-                    if response.statusCode == 200 {
-                        if let image = UIImage(data: data) {
-                            DispatchQueue.main.async {
-                                completion(image)
-                            }
-                        }
-                    }
-                }.resume()
-            }
-        }
-    }
-
-    // MARK: - private functions
-
-    private func characterById(_ id: Int) -> CharacterResponse? {
-        if let character = characters.first(where: { $0.id == id }) {
-            return character
-        }
-        return nil
-    }
-
-    private func queryItemsMarvel() -> [URLQueryItem] {
-        return [
-            URLQueryItem(name: "ts", value: kTs),
-            URLQueryItem(name: "apikey", value: kApikey),
-            URLQueryItem(name: "hash", value: kHash)
-        ]
+    func imageNetworkSelectedCharacter(id: Int, completion: @escaping (UIImage) -> Void) {
+        imageNetwork(id: selectedCharacter?.id ?? 0, size: .big, completion: completion)
     }
 
 }

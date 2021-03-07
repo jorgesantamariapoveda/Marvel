@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1FF31325F5675F00EDE0F9 /* DetailCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1FF31225F5675F00EDE0F9 /* DetailCharacterViewController.swift */; };
 		CF4723D125F4EA0A00CC7BA1 /* CharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */; };
 		CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64769625F3903100252736 /* CharactersTableViewController.swift */; };
-		CF6476C825F39B2300252736 /* DetailCharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476C725F39B2300252736 /* DetailCharacterTableViewController.swift */; };
 		CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476CD25F3A37700252736 /* MarvelModel.swift */; };
 		CF6476D925F3BB8F00252736 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476D825F3BB8F00252736 /* MarvelResponse.swift */; };
 		CF6476DF25F3D60200252736 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6476DE25F3D60200252736 /* Constants.swift */; };
@@ -32,9 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF1FF31225F5675F00EDE0F9 /* DetailCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterViewController.swift; sourceTree = "<group>"; };
 		CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewCell.swift; sourceTree = "<group>"; };
 		CF64769625F3903100252736 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
-		CF6476C725F39B2300252736 /* DetailCharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterTableViewController.swift; sourceTree = "<group>"; };
 		CF6476CD25F3A37700252736 /* MarvelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelModel.swift; sourceTree = "<group>"; };
 		CF6476D825F3BB8F00252736 /* MarvelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
 		CF6476DE25F3D60200252736 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		CF4723D725F50AC700CC7BA1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CF6476C725F39B2300252736 /* DetailCharacterTableViewController.swift */,
+				CF1FF31225F5675F00EDE0F9 /* DetailCharacterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -262,11 +262,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6476C825F39B2300252736 /* DetailCharacterTableViewController.swift in Sources */,
 				CF6476D925F3BB8F00252736 /* MarvelResponse.swift in Sources */,
 				CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */,
 				CF4723D125F4EA0A00CC7BA1 /* CharactersTableViewCell.swift in Sources */,
 				CFE1BC0225EE32F1006F003E /* AppDelegate.swift in Sources */,
+				CF1FF31325F5675F00EDE0F9 /* DetailCharacterViewController.swift in Sources */,
 				CF6476DF25F3D60200252736 /* Constants.swift in Sources */,
 				CF6476CE25F3A37800252736 /* MarvelModel.swift in Sources */,
 				CFE1BC0425EE32F1006F003E /* SceneDelegate.swift in Sources */,
