@@ -62,7 +62,7 @@ struct MarvelModel {
         characters = charactersModel
     }
 
-    mutating func charactersNetwork(completion: @escaping (Result<[CharacterResponse], Error>) -> Void) {
+    func charactersNetwork(completion: @escaping (Result<[CharacterResponse], Error>) -> Void) {
         guard var urlComponents = URLComponents(string: kUrlBaseCharacters) else { return }
         urlComponents.queryItems = queryItemsMarvel()
 
@@ -136,7 +136,7 @@ struct MarvelModel {
         }.resume()
     }
 
-    func imageNetwork(id: Int, size: ImageVariants, callback: @escaping (UIImage) -> Void) {
+    func imageNetwork(id: Int, size: ImageVariants, completion: @escaping (UIImage) -> Void) {
         if let character = characterById(id) {
             if let thumbnail = character.thumbnail,
                let path = thumbnail.path,
@@ -157,7 +157,7 @@ struct MarvelModel {
                     if response.statusCode == 200 {
                         if let image = UIImage(data: data) {
                             DispatchQueue.main.async {
-                                callback(image)
+                                completion(image)
                             }
                         }
                     }
