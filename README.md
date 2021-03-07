@@ -24,6 +24,6 @@ API de Marvel: [https://developer.marvel.com/docs](https://developer.marvel.com/
 
 - Precisamente uno de los atributos necesarios para obtener la url de las imágenes tiene como nombre *extension*. Al ser una palabra reservada del lenguaje Swift he empleado CodingKeys para solucionarlo.
 
-- He implementado una celda custom para la vista principal pues los tamaños de las imágenes no se adaptaban bien a la UImage que trae por defecto la celda por defecto.
+- He implementado una celda custom para la vista principal pues los tamaños de las imágenes no se adaptaban bien a la UImage que trae por defecto la celda por defecto. Es importante en las celdas custom hacer uso del método *prepareForReuse* para que el rendimiento sea óptimo.
 
 - Auto-layout: optmizadas para emplear las estrictamente necesarias en busca de un mejor rendimiento a la hora de renderizar las vistas.
