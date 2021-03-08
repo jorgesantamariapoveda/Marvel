@@ -11,7 +11,7 @@ final class CharactersTableViewController: UITableViewController {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
-    var model = MarvelModel()
+    var model: CharactersModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ final class CharactersTableViewController: UITableViewController {
         getCharactersNetwork { [weak self] result in
             switch result {
             case .success(let charactersResponse):
-                self?.model.setCharacters(charactersResponse)
+                self?.model = CharactersModel(charactersResponse: charactersResponse)
                 DispatchQueue.main.async {
                     self?.setupUI()
                 }
@@ -56,7 +56,7 @@ final class CharactersTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        model.numCharacters()
+        model?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,13 +64,15 @@ final class CharactersTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        cell.nameLabel.text = model.nameCharacterByIndex(indexPath.row)
-        
-        if let id = model.idCharacter(index: indexPath.row) {
-            model.getImageMarvelNetwork(id: id, size: .small) {
-                cell.avatar.image = $0
-                cell.avatar.layer.cornerRadius = 8
-                cell.setNeedsUpdateConfiguration()
+        if let model = model {
+            cell.nameLabel.text = model.getNameCharacter(index: indexPath.row)
+            
+            if let urlAvatar = model.getUrlAvatar(index: indexPath.row) {
+                getImageNetwork(url: urlAvatar) {
+                    cell.avatar.image = $0
+                    cell.avatar.layer.cornerRadius = 8
+                    cell.setNeedsUpdateConfiguration()
+                }
             }
         }
 
@@ -80,13 +82,13 @@ final class CharactersTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail" {
-            if let detailVC = segue.destination as? DetailCharacterViewController,
-               let indexPath = tableView.indexPathForSelectedRow {
-                detailVC.model = model
-                detailVC.idCharacterModel = model.idCharacter(index: indexPath.row)
-            }
-        }
+//        if segue.identifier == "detail" {
+//            if let detailVC = segue.destination as? DetailCharacterViewController,
+//               let indexPath = tableView.indexPathForSelectedRow {
+//                detailVC.model = model
+//                detailVC.idCharacterModel = model.idCharacter(index: indexPath.row)
+//            }
+//        }
     }
 
 }
