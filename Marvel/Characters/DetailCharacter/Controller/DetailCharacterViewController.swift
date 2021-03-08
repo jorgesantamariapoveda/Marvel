@@ -29,7 +29,7 @@ final class DetailCharacterViewController: UIViewController {
     private func setupData() {
         guard let id = idCharacterModel else { return }
 
-        model?.characterNetwork(id: id) { [weak self] result in
+        getCharacterNetwork(id: id) { [weak self] result in
             switch result {
             case .success(let charactersModel):
                 self?.model?.setSelectedCharacter(charactersModel)

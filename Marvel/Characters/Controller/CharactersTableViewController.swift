@@ -9,6 +9,8 @@ import UIKit
 
 final class CharactersTableViewController: UITableViewController {
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     var model = MarvelModel()
 
     override func viewDidLoad() {
@@ -22,10 +24,10 @@ final class CharactersTableViewController: UITableViewController {
     // MARK: - Private functions
 
     private func setupData() {
-        model.charactersNetwork { [weak self] result in
+        getCharactersNetwork { [weak self] result in
             switch result {
-            case .success(let charactersModel):
-                self?.model.setCharactersModel(charactersModel)
+            case .success(let charactersResponse):
+                self?.model.setCharacters(charactersResponse)
                 DispatchQueue.main.async {
                     self?.setupUI()
                 }
@@ -47,6 +49,7 @@ final class CharactersTableViewController: UITableViewController {
     }
 
     private func setupUI() {
+        activityIndicator.stopAnimating()
         tableView.reloadData()
     }
 
@@ -62,8 +65,9 @@ final class CharactersTableViewController: UITableViewController {
         }
 
         cell.nameLabel.text = model.nameCharacterByIndex(indexPath.row)
+        
         if let id = model.idCharacter(index: indexPath.row) {
-            model.imageNetwork(id: id, size: .small) {
+            model.getImageMarvelNetwork(id: id, size: .small) {
                 cell.avatar.image = $0
                 cell.avatar.layer.cornerRadius = 8
                 cell.setNeedsUpdateConfiguration()
