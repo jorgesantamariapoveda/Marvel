@@ -24,7 +24,7 @@ final class CharactersTableViewController: UITableViewController {
     // MARK: - Private functions
 
     private func setupData() {
-        getCharactersNetwork { [weak self] result in
+        getCharactersAPI { [weak self] result in
             switch result {
             case .success(let charactersResponse):
                 self?.model = CharactersModel(charactersResponse: charactersResponse)
@@ -82,13 +82,13 @@ final class CharactersTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "detail" {
-//            if let detailVC = segue.destination as? DetailCharacterViewController,
-//               let indexPath = tableView.indexPathForSelectedRow {
-//                detailVC.model = model
-//                detailVC.idCharacterModel = model.idCharacter(index: indexPath.row)
-//            }
-//        }
+        if segue.identifier == "detailCharacter" {
+            if let detailCharacterTableViewController = segue.destination as? DetailCharacterTableViewController,
+               let indexPath = tableView.indexPathForSelectedRow,
+               let idCharacter = model?.getIdCharacter(index: indexPath.row)  {
+                detailCharacterTableViewController.idCharacterModel = idCharacter
+            }
+        }
     }
 
 }
