@@ -9,7 +9,7 @@ import Foundation
 
 struct CharactersModel {
 
-    var characters: [CharacterModel]
+    private var characters: [CharacterModel]
     var count: Int {
         characters.count
     }

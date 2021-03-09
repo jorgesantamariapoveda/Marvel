@@ -1,67 +1,30 @@
 //
-//  MarvelResponse.swift
+//  MarvelAPI.swift
 //  Marvel
 //
-//  Created by Jorge on 06/03/2021.
+//  Created by Jorge on 09/03/2021.
 //
 
 import UIKit
-
-// MARK: - Marvel Response
-
-struct MarvelResponse: Decodable {
-    let code: Int?
-    let status: String?
-    let data: DataClassResponse?
-}
-
-struct DataClassResponse: Decodable {
-    let results: [CharacterResponse]?
-}
-
-struct CharacterResponse: Decodable {
-    let id: Int?
-    let name: String?
-    let description: String?
-    let thumbnail: ThumbnailResponse?
-    let comics: ComicsResponse?
-    let series: ComicsResponse?
-    let stories: StoriesResponse?
-    let events: ComicsResponse?
-}
-
-struct ComicsResponse: Decodable {
-    let available: Int?
-}
-
-struct StoriesResponse: Decodable {
-    let available: Int?
-}
-
-struct ThumbnailResponse: Decodable {
-    let path: String?
-    let thumbnailExtension: String?
-
-    enum CodingKeys: String, CodingKey {
-        case path
-        case thumbnailExtension = "extension"
-    }
-}
-
-// MARK: - Marvel Network
 
 let kUrlBaseCharacters = "https://gateway.marvel.com/v1/public/characters"
 let kTs = "1"
 let kApikey = "52a2e3ff2df40e52385ab0c03ea649d9"
 let kHash = "176766d3be9470eb2162da8287e0a877"
 
-private func queryItemsMarvel() -> [URLQueryItem] {
-    return [
-        URLQueryItem(name: "ts", value: kTs),
-        URLQueryItem(name: "apikey", value: kApikey),
-        URLQueryItem(name: "hash", value: kHash)
-    ]
+enum MarvelError: Error {
+    case connectionError(Error)
+    case statusCode(Int)
+    case decoding
+    case emptyData
 }
+
+enum ImageVariants: String {
+    case small = "/portrait_small"
+    case big = "/landscape_amazing"
+}
+
+// MARK: - Public functions
 
 func getCharactersNetwork(completion: @escaping (Result<[CharacterResponse], Error>) -> Void) {
     guard var urlComponents = URLComponents(string: kUrlBaseCharacters) else { return }
@@ -153,4 +116,12 @@ func getImageNetwork(url: URL, completion: @escaping (UIImage) -> Void) {
         .resume()
 }
 
+// MARK: - Private functions
 
+private func queryItemsMarvel() -> [URLQueryItem] {
+    return [
+        URLQueryItem(name: "ts", value: kTs),
+        URLQueryItem(name: "apikey", value: kApikey),
+        URLQueryItem(name: "hash", value: kHash)
+    ]
+}
