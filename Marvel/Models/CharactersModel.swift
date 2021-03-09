@@ -17,31 +17,19 @@ struct CharactersModel {
     // MARK: - Public functions
 
     init (charactersResponse: [CharacterResponse]) {
-        characters = charactersResponse.map {
-            return CharacterModel(
-                id: $0.id ?? 0,
-                name: $0.name ?? "",
-                description: $0.description ?? "",
-                numComics: $0.comics?.available ?? 0,
-                numSeries: $0.series?.available ?? 0,
-                numStories: $0.stories?.available ?? 0,
-                pathAvatar: $0.thumbnail?.path ?? "",
-                extensionAvatar: $0.thumbnail?.thumbnailExtension ?? "")
-        }
+        characters = charactersResponse.map { CharacterModel(characterResponse: $0) }
+    }
+
+    func getIdCharacter(index: Int) -> Int? {
+        index < characters.count ? characters[index].getId() : nil
     }
 
     func getNameCharacter(index: Int) -> String {
-        if index < characters.count {
-            return characters[index].name
-        }
-        return ""
+        index < characters.count ? characters[index].getName() : ""
     }
 
     func getUrlAvatar(index: Int) -> URL? {
-        if index < characters.count {
-            return characters[index].getUrlAvatar()
-        }
-        return nil
+        index < characters.count ? characters[index].getUrlAvatar() : nil
     }
 
 }

@@ -7,26 +7,9 @@
 
 import UIKit
 
-let kUrlBaseCharacters = "https://gateway.marvel.com/v1/public/characters"
-let kTs = "1"
-let kApikey = "52a2e3ff2df40e52385ab0c03ea649d9"
-let kHash = "176766d3be9470eb2162da8287e0a877"
-
-enum MarvelError: Error {
-    case connectionError(Error)
-    case statusCode(Int)
-    case decoding
-    case emptyData
-}
-
-enum ImageVariants: String {
-    case small = "/portrait_small"
-    case big = "/landscape_amazing"
-}
-
 // MARK: - Public functions
 
-func getCharactersNetwork(completion: @escaping (Result<[CharacterResponse], Error>) -> Void) {
+func getCharactersAPI(completion: @escaping (Result<[CharacterResponse], Error>) -> Void) {
     guard var urlComponents = URLComponents(string: kUrlBaseCharacters) else { return }
     urlComponents.queryItems = queryItemsMarvel()
 
@@ -62,7 +45,7 @@ func getCharactersNetwork(completion: @escaping (Result<[CharacterResponse], Err
         .resume()
 }
 
-func getCharacterNetwork(id: Int, completion: @escaping (Result<CharacterResponse, Error>) -> Void) {
+func getCharacterAPI(id: Int, completion: @escaping (Result<CharacterResponse, Error>) -> Void) {
     guard var urlComponents = URLComponents(string: "\(kUrlBaseCharacters)/\(id)") else { return }
     urlComponents.queryItems = queryItemsMarvel()
 
@@ -99,22 +82,12 @@ func getCharacterNetwork(id: Int, completion: @escaping (Result<CharacterRespons
     }.resume()
 }
 
-func getImageNetwork(url: URL, completion: @escaping (UIImage) -> Void) {
-    URLSession.shared
-        .dataTask(with: url) { data, response, error in
-            guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
-                return
-            }
-            if response.statusCode == 200 {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        completion(image)
-                    }
-                }
-            }
-        }
-        .resume()
-}
+// MARK: - Private constants
+
+private let kUrlBaseCharacters = "https://gateway.marvel.com/v1/public/characters"
+private let kTs = "1"
+private let kApikey = "52a2e3ff2df40e52385ab0c03ea649d9"
+private let kHash = "176766d3be9470eb2162da8287e0a877"
 
 // MARK: - Private functions
 
