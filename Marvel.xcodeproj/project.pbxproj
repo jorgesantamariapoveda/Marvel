@@ -10,6 +10,7 @@
 		CF1BBDD825F7BEEB002BC39A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1BBDD725F7BEEB002BC39A /* Network.swift */; };
 		CF1BBDE125F7CB60002BC39A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1BBDE025F7CB60002BC39A /* Enums.swift */; };
 		CF1BBDE525F7D088002BC39A /* DetailCharacterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1BBDE425F7D088002BC39A /* DetailCharacterTableViewController.swift */; };
+		CF1BBDEB25F7E1CD002BC39A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1BBDEA25F7E1CD002BC39A /* Strings.swift */; };
 		CF4723D125F4EA0A00CC7BA1 /* CharactersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */; };
 		CF48377925F756C3005E2EE4 /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF48377825F756C3005E2EE4 /* MarvelAPI.swift */; };
 		CF64769725F3903200252736 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64769625F3903100252736 /* CharactersTableViewController.swift */; };
@@ -38,6 +39,7 @@
 		CF1BBDD725F7BEEB002BC39A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		CF1BBDE025F7CB60002BC39A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		CF1BBDE425F7D088002BC39A /* DetailCharacterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterTableViewController.swift; sourceTree = "<group>"; };
+		CF1BBDEA25F7E1CD002BC39A /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		CF4723D025F4EA0A00CC7BA1 /* CharactersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewCell.swift; sourceTree = "<group>"; };
 		CF48377825F756C3005E2EE4 /* MarvelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		CF64769625F3903100252736 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				CF1BBDD725F7BEEB002BC39A /* Network.swift */,
 				CF1BBDE025F7CB60002BC39A /* Enums.swift */,
+				CF1BBDEA25F7E1CD002BC39A /* Strings.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				CF4723D125F4EA0A00CC7BA1 /* CharactersTableViewCell.swift in Sources */,
 				CFE1BC0225EE32F1006F003E /* AppDelegate.swift in Sources */,
 				CFE1BC0425EE32F1006F003E /* SceneDelegate.swift in Sources */,
+				CF1BBDEB25F7E1CD002BC39A /* Strings.swift in Sources */,
 				CF1BBDE125F7CB60002BC39A /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

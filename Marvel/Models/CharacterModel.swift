@@ -42,12 +42,12 @@ struct CharacterModel {
     func getDescription() -> String {
         if let description = description {
             if description.isEmpty {
-                return "Without description"
+                return IdSinDescripcion
             } else {
                 return description
             }
         }
-        return "Without description"
+        return IdSinDescripcion
     }
 
     func getNumComics() -> String {
