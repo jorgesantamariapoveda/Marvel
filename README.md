@@ -34,3 +34,11 @@ No he mapeado por completo toda la información que recibo de cada una de las pe
 - Vista principal: *UITableView* con celda custom, pues los tamaños de las imágenes no se adaptaban bien a la UImage que trae por defecto la celda de los prototipos dinámicos. Es importante en las celdas custom hacer uso del método *prepareForReuse* para que el rendimiento sea óptimo.
 - Para la vista de detalle: *UITableView* con celdas estáticas.
 - *Auto-layout y constraints*: definidas las estríctamente necesarias para que cumplan con su cometido y con ello optimizando los recursos de renderizado.
+
+### Capturas de pantallas
+
+![splash](./screenshots/splash.png "Splash")
+![characters](./screenshots/characters.png "Characters")
+![detailCharacter](./screenshots/detailCharacter.png "Detail character")
+
+
