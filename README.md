@@ -14,7 +14,7 @@ API de Marvel: [https://developer.marvel.com/docs](https://developer.marvel.com/
 
 ### API
 
-He decidido hacer un diseño claro y sencillo, que permita un fácil escalado. Con ello quiero decir que no he mapeado por completo toda la información que recibo de cada una de las peticiones.
+No he mapeado por completo toda la información que recibo de cada una de las peticiones. Mi objetivo era en realizar una implementación sencilla, clara y fácilmente escalable.
 
 - Fichero *MarvelResponse*: información recuperada.
 - Fichero *MarvelAPI*: definidas claramente las peticiones realizadas.
