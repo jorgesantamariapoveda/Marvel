@@ -33,6 +33,7 @@ No he mapeado por completo toda la información que recibo de cada una de las pe
 -  Nada de librerías de terceros. Las peticiones a red realizadas con *URLSession* y la concurrencia con *GCD*.
 - Vista principal: *UITableView* con celda custom pues los tamaños de las imágenes no se adaptaban bien a la UImage que trae por defecto la celda de los prototipos dinámicos. Es importante en las celdas custom hacer uso del método *prepareForReuse* para que el rendimiento sea óptimo.
 - Para la vista de detalle: *UITableView* con celdas estáticas.
+- Fichero *FileManager*: creación de una caché para la gestión de imágenes y disminuir el número de peticiones a la red.
 - *Auto-layout y constraints*: definidas las estríctamente necesarias para que cumplan con su cometido y con ello optimizando los recursos de renderizado.
 
 ### Capturas de pantallas
