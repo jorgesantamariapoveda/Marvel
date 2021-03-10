@@ -16,7 +16,7 @@ struct CharacterModel {
     private let numSeries: Int?
     private let numStories: Int?
     private let pathAvatar: String?
-    private let extensionAvatar: String?
+    private let extensionAvatar: ImageExtension?
 
     // MARK: - Public functions
 
@@ -71,17 +71,26 @@ struct CharacterModel {
         return ""
     }
 
-    func getUrlAvatar(size: ImageVariants = .small) -> URL? {
+    func getUrlAvatar(size: ImageVariants) -> URL? {
         if let pathAvatar = pathAvatar,
            let extensionAvatar = extensionAvatar {
             let path = pathAvatar.replacingOccurrences(of: "http", with: "https")
-            if let url = URL(string: "\(path)\(size.rawValue).\(extensionAvatar)") {
+            if let url = URL(string: "\(path)\(size.rawValue).\(extensionAvatar.rawValue)") {
                 return url
             }
             return nil
         } else {
             return nil
         }
+    }
+
+    func getImageInfo() -> (imageName: String?, imageExtension: ImageExtension?) {
+        guard let path = pathAvatar else {
+            return (nil, nil)
+        }
+        let imageName = path.components(separatedBy: "/").last
+
+        return (imageName, extensionAvatar)
     }
 
 }

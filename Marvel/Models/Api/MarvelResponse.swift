@@ -38,11 +38,16 @@ struct StoriesResponse: Decodable {
 
 struct ThumbnailResponse: Decodable {
     let path: String?
-    let thumbnailExtension: String?
+    let thumbnailExtension: ImageExtension?
 
     enum CodingKeys: String, CodingKey {
         case path
         case thumbnailExtension = "extension"
     }
+}
+
+enum ImageExtension: String, Decodable {
+    case gif
+    case jpg
 }
 
