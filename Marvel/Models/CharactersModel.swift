@@ -20,16 +20,8 @@ struct CharactersModel {
         characters = charactersResponse.map { CharacterModel(characterResponse: $0) }
     }
 
-    func getIdCharacter(index: Int) -> Int? {
-        index < characters.count ? characters[index].getId() : nil
-    }
-
-    func getNameCharacter(index: Int) -> String {
-        index < characters.count ? characters[index].getName() : ""
-    }
-
-    func getUrlAvatar(index: Int) -> URL? {
-        index < characters.count ? characters[index].getUrlAvatar() : nil
+    func getCharacter(index: Int) -> CharacterModel? {
+        index < characters.count ? characters[index] : nil
     }
 
 }

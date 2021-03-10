@@ -61,12 +61,12 @@ final class DetailCharacterTableViewController: UITableViewController {
         numSeriesLabel.text = model?.getNumSeries()
         numStoriesLabel.text = model?.getNumStories()
         descriptionTextView.text = model?.getDescription()
-        avatar.layer.cornerRadius = 8
 
         if let url = model?.getUrlAvatar(size: .big) {
             getImageNetwork(url: url) { [weak self] image in
                 DispatchQueue.main.async {
                     self?.avatar.image = image
+                    self?.avatar.layer.cornerRadius = 8
                 }
             }
         }

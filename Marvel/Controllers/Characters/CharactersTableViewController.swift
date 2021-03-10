@@ -64,16 +64,9 @@ final class CharactersTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        if let model = model {
-            cell.nameLabel.text = model.getNameCharacter(index: indexPath.row)
-            
-            if let urlAvatar = model.getUrlAvatar(index: indexPath.row) {
-                getImageNetwork(url: urlAvatar) {
-                    cell.avatar.image = $0
-                    cell.avatar.layer.cornerRadius = 8
-                    cell.setNeedsUpdateConfiguration()
-                }
-            }
+        if let model = model,
+           let character = model.getCharacter(index: indexPath.row) {
+            cell.setupData(character: character)
         }
 
         return cell
@@ -85,8 +78,8 @@ final class CharactersTableViewController: UITableViewController {
         if segue.identifier == "detailCharacter" {
             if let detailCharacterTableViewController = segue.destination as? DetailCharacterTableViewController,
                let indexPath = tableView.indexPathForSelectedRow,
-               let idCharacter = model?.getIdCharacter(index: indexPath.row)  {
-                detailCharacterTableViewController.idCharacterModel = idCharacter
+               let character = model?.getCharacter(index: indexPath.row)  {
+                detailCharacterTableViewController.idCharacterModel = character.getId()
             }
         }
     }
