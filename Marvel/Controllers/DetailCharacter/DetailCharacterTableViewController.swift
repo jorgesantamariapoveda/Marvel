@@ -9,6 +9,7 @@ import UIKit
 
 final class DetailCharacterTableViewController: UITableViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var numComicsLabel: UILabel!
     @IBOutlet weak var numSeriesLabel: UILabel!
@@ -55,6 +56,7 @@ final class DetailCharacterTableViewController: UITableViewController {
     }
 
     private func setupUI() {
+        nameLabel.text = model?.getName()
         numComicsLabel.text = model?.getNumComics()
         numSeriesLabel.text = model?.getNumSeries()
         numStoriesLabel.text = model?.getNumStories()
